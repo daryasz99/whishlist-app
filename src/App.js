@@ -1,11 +1,11 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Dashboard from "./pages/Dashboard";
-import UserProfile from "./pages/UserProfile";
+import Home from "./page/Home";
+import Login from "./page/Login";
+import Register from "./page/Register";
+import Dashboard from "./page/Dashboard";
+import UserProfile from "./page/UserProfile";
 
 function App() {
 
