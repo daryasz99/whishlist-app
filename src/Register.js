@@ -1,44 +1,65 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-export default function Register() {
-  const [form, setForm] = useState({ username: "", email: "", password: "" });
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
+const Register = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("User Registered:", form);
-    alert("ثبت‌نام با موفقیت انجام شد (فیک)");
+
+    if (password !== confirmPassword) {
+      setError("Passwords do not match");
+      return;
+    }
+
+    // اینجا می‌تونی ارسال اطلاعات به دیتابیس رو انجام بدی
+    console.log("Registered with:", { email, password });
   };
 
   return (
-    <div>
-      <h2>ثبت‌نام</h2>
+    <div className="register">
+      <h2>Register</h2>
+      {error && <p className="error">{error}</p>}
       <form onSubmit={handleSubmit}>
-        <input
-          name="username"
-          placeholder="نام کاربری"
-          value={form.username}
-          onChange={handleChange}
-        /><br />
-        <input
-          name="email"
-          placeholder="ایمیل"
-          type="email"
-          value={form.email}
-          onChange={handleChange}
-        /><br />
-        <input
-          name="password"
-          placeholder="رمز عبور"
-          type="password"
-          value={form.password}
-          onChange={handleChange}
-        /><br />
-        <button type="submit">ثبت‌نام</button>
+        <div>
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            id="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="password">Password:</label>
+          <input
+            type="password"
+            id="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+        </div>
+
+        <div>
+          <label htmlFor="confirmPassword">Confirm Password:</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
+          />
+        </div>
+
+        <button type="submit">Register</button>
       </form>
     </div>
   );
-}
+};
+
+export default Register;
