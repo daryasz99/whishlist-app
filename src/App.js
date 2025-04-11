@@ -2,11 +2,11 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 // صفحات مختلف
-import Home from "./pages/Home";
-import Login from "./pages/Login";
+import Home from "./Home";
+import Login from "./Login";
 import Register from "./Register";
-import Dashboard from "./pages/Dashboard";
-import UserProfile from "./pages/UserProfile";
+import Dashboard from "./Dashboard";
+import UserProfile from "./UserProfile";
 
 function App() {
   return (
